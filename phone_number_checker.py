@@ -9,3 +9,16 @@ def get_phone_number():
         print("Phone number cannot be empty.")
         return None
     return phone_number
+
+def parse_phone_number(phone_number):
+    try: 
+
+        parsed_number = phonenumbers.parse(phone_number)
+
+        if not phonenumbers.is_valid_number(parsed_number):
+            print("Invalid phone number format.")
+            return None
+        return parsed_number
+    except phonenumbers.NumberParseException as e:
+        print("Error paring phone number: {e}")
+        return None
