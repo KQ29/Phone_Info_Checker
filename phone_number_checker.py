@@ -57,3 +57,21 @@ def format_output(info_dict, json_output=False):
     else:
         for key, value in info_dict.items():
             print(f"{key}: {value}")
+
+def display_phone_number_info(phone_number, language="en", json_output=False):
+    # Parse the phone number
+    parsed_number = parse_phone_number(phone_number)
+    if parsed_number:
+        # Gather information about the phone number
+        info = {}
+        info["International Format"] = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+        info["Country"], info["Region"] = get_country_and_region(parsed_number, language)
+        info["Operator"] = get_operator(parsed_number, language)
+        info["Time Zones"] = ", ".join(get_time_zones(parsed_number))
+        info["Number Type"] = get_number_type(parsed_number)
+        info["Is Possible Number"] = "Yes" if is_possible_number(parsed_number) else "No"
+        
+        # Output the gathered information
+        format_output(info, json_output=json_output)
+    else:
+        print("Could not retrieve information due to an invalid phone number.")
