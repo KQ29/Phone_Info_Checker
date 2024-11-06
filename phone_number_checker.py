@@ -33,3 +33,21 @@ def get_operator(parsed_number, language="en"):
 
 def get_time_zones(parsed_number):
     return timezone.time_zones_for_number(parsed_number)
+
+def get_number_type(parsed_number):
+
+    types = {
+        phonenumbers.PhoneNumberType.MOBILE: "Mobile",
+        phonenumbers.PhoneNumberType.FIXED_LINE: "Fixed Line",
+        phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE: "Fixed Line or Mobile",
+        phonenumbers.PhoneNumberType.TOLL_FREE: "Toll-Free",
+        phonenumbers.PhoneNumberType.PREMIUM_RATE: "Premium Rate",
+        phonenumbers.PhoneNumberType.SHARED_COST: "Shared Cost",
+        phonenumbers.PhoneNumberType.VOIP: "VoIP",
+        phonenumbers.PhoneNumberType.PAGER: "Pager",
+        phonenumbers.PhoneNumberType.UAN: "UAN",
+        phonenumbers.PhoneNumberType.VOICEMAIL: "Voicemail",
+        phonenumbers.PhoneNumberType.UNKNOWN: "Unknown",
+    }
+    return types.get(parsed_number.number_type, "Unknown")
+
