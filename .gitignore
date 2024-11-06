@@ -1,3 +1,7 @@
 # Ignoring Virtual Environment
 
 env
+
+# Ignoring __pycache__
+
+__pycache__
