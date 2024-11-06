@@ -63,9 +63,9 @@ def get_number_type(parsed_number):
 
 def get_call_price(parsed_number):
     dialing_code = f"+{parsed_number.country_code}"
-    price_info = call_prices.get(dialing_code)  # Retrieves the nested dictionary for the country
+    price_info = call_prices.get(dialing_code)
     if price_info:
-        return price_info.get("rate_eur_per_min", "Not Available")  # Accesses the rate within the nested dictionary
+        return f"{price_info.get('rate_eur_per_min', 'Not Available')} €/min"
     return "Not Available"
 
 def format_output(info_dict, json_output=False):
