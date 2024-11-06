@@ -51,3 +51,9 @@ def get_number_type(parsed_number):
     }
     return types.get(parsed_number.number_type, "Unknown")
 
+def format_output(info_dict, json_output=False):
+    if json_output:
+        print(json.dumps(info_dict, indent=4))
+    else:
+        for key, value in info_dict.items():
+            print(f"{key}: {value}")
