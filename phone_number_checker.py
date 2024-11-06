@@ -75,3 +75,7 @@ def display_phone_number_info(phone_number, language="en", json_output=False):
         format_output(info, json_output=json_output)
     else:
         print("Could not retrieve information due to an invalid phone number.")
+
+phone_number = get_phone_number()
+if phone_number:
+    display_phone_number_info(phone_number,languages="en", json_output=True)
