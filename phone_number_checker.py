@@ -31,3 +31,5 @@ def get_country_and_region(parsed_number, language="en"):
 def get_operator(parsed_number, language="en"):
     return carrier.name_for_number(parsed_number, language)
 
+def get_time_zones(parsed_number):
+    return timezone.time_zones_for_number(parsed_number)
