@@ -28,3 +28,6 @@ def get_country_and_region(parsed_number, language="en"):
     region = geocoder.description_for_number(parsed_number, language)
     return country, region
 
+def get_operator(parsed_number, language="en"):
+    return carrier.name_for_number(parsed_number, language)
+
